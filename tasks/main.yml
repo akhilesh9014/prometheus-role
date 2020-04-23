@@ -1,0 +1,36 @@
+---
+- name: Create group for prometheus
+  group:
+    name: prometheus        
+- name: Create user for prometheus
+  user:
+    name: prometheus
+    group: prometheus
+    #home:
+    createhome: no
+    system: yes
+
+- name: Create user for node_exporter
+  user:
+    name: node_exporter
+    group: node_exporter
+    #home:
+    createhome: no
+    system: yes
+- name: Create prometheus config directory 
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: prometheus
+    group: prometheus
+    mode: '0755'
+  with-items:
+    - /etc/prometheus
+    - /var/lib/prometheus
+
+- name: Install Prometheus
+  include: setup-prometheus.yml
+
+- name: Install Node Exporter
+  include: setup-node_exporter.yml  
+    
