@@ -1,7 +1,7 @@
 galaxy_info:
   author: Ravikiran 
   description: This role installs Prometheus,Node-exporter and Grafana on Ubuntu.
-  company: your company (optional)
+  company: DevOps Support
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
