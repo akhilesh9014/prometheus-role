@@ -1,22 +1,25 @@
 ---
-- name: Create group for prometheus
+- name: Create groups for prometheus and node_exporter
   group:
-    name: prometheus        
+    name: "{{ item }}"
+  with_items:
+    - prometheus
+    - node_exporter
+
 - name: Create user for prometheus
   user:
     name: prometheus
     group: prometheus
-    #home:
     createhome: no
     system: yes
-
+     
 - name: Create user for node_exporter
   user:
     name: node_exporter
     group: node_exporter
-    #home:
     createhome: no
     system: yes
+
 - name: Create prometheus config directory 
   file:
     path: "{{ item }}"
@@ -24,13 +27,23 @@
     owner: prometheus
     group: prometheus
     mode: '0755'
-  with-items:
+  with_items:
     - /etc/prometheus
     - /var/lib/prometheus
+- name: Create install directories
+  file:
+    path: /usr/share/{{ item }}       
+    state: directory        
+  with_items:
+    - prometheus
+    - node_exporter   
 
 - name: Install Prometheus
   include: setup-prometheus.yml
 
 - name: Install Node Exporter
   include: setup-node_exporter.yml  
+
+- name: Install Grafana
+  include: setup-grafana.yml
     

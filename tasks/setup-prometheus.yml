@@ -26,7 +26,7 @@
     group: node_exporter
   with_items:
     - consoles
-    - console-libraries
+    - console_libraries
 - name: Copy prometheus.yml file
   template: 
     src: templates/prometheus.yml.j2
@@ -38,7 +38,7 @@
   template:
     src: templates/prometheus.service.j2
     dest: /etc/systemd/system/prometheus.service
-  notify: restart prometheus service    
+    #notify: restart prometheus service    
 - name: Service creation  
   service:
     daemon_reload: yes
