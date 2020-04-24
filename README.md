@@ -1,7 +1,7 @@
-Role Name
+Role Name : prometheus-role
 ---------
 
-This role helps you in setting up monitoring system for your Linux(Ubuntu) systems.
+This role helps you in setting up monitoring system for your Linux(Ubuntu) systems.Strictly not recommended for Production.
 
 Example Playbook
 ----------------
