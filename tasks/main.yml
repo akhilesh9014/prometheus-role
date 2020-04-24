@@ -5,21 +5,18 @@
   with_items:
     - prometheus
     - node_exporter
-
 - name: Create user for prometheus
   user:
     name: prometheus
     group: prometheus
     createhome: no
     system: yes
-     
 - name: Create user for node_exporter
   user:
     name: node_exporter
     group: node_exporter
     createhome: no
     system: yes
-
 - name: Create prometheus config directory 
   file:
     path: "{{ item }}"
@@ -37,13 +34,10 @@
   with_items:
     - prometheus
     - node_exporter   
-
 - name: Install Prometheus
   include: setup-prometheus.yml
-
 - name: Install Node Exporter
   include: setup-node_exporter.yml  
-
 - name: Install Grafana
   include: setup-grafana.yml
     
