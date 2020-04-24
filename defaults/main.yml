@@ -1,5 +1,12 @@
 ---
+# Prometheus variables
 prom_version: 2.0.0
 prom_archive_url: https://github.com/prometheus/prometheus/releases/download/v{{ prom_version }}/prometheus-{{ prom_version }}.linux-amd64.tar.gz      
 prom_archive_dest: /tmp/prometheus-{{ prom_version }}.linux-amd64.tar.gz
-prom_install_dir: /usr/share/prometheus 
+prom_install_dir: /usr/share/prometheus
+
+# Node exporter variables
+node_exp_version: 0.15.1
+node_exp_url: https://github.com/prometheus/node_exporter/releases/download/v{{ node_exp_version }}/node_exporter-{{ node_exp_version }}.linux-amd64.tar.gz
+node_exp_dest: /tmp/node_exporter-{{ node_exp_version }}.linux-amd64.tar.gz
+node_exp_install_dir: /usr/share/node_exporter
