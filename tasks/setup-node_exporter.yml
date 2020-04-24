@@ -1,5 +1,20 @@
 ---
-- name: 
+- name: Download node exporter
+  get_url:
+    url: "{{ node_exp_url }}"
+    dest: "{{ node_exp_dest }}"
+- name: Extract node exporter
+  unarchive: 
+    src: "{{ node_exp_dest }}"
+    dest: "{{ node_exp_install_dir }}"
+    extra_opts: "--strip-components=1"
+- name: Copy node exporter binaries
+  copy:
+    src: "{{ node_exp_install_dir }}/node_exporter" 
+    dest: /usr/local/bin
+    owner: node_exporter
+    group: node_exporter
+    mode: 0755
 - name: copy node exporter service file
   template:
     src: templates/node_exporter.service.j2
