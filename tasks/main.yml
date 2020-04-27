@@ -1,10 +1,11 @@
 ---
-- name: Create groups for prometheus and node_exporter
+- name: Create groups for prometheus and node_exporter and alertmanager
   group:
     name: "{{ item }}"
   with_items:
     - prometheus
     - node_exporter
+    - alertmanager
 - name: Create user for prometheus
   user:
     name: prometheus
@@ -17,7 +18,13 @@
     group: node_exporter
     createhome: no
     system: yes
-- name: Create prometheus config directory 
+- name: Create user for alertmanager
+  user:
+    name: alertmanager
+    group: alertmanager
+    createhome: no
+    system: yes
+- name: Create prometheus config directory
   file:
     path: "{{ item }}"
     state: directory
@@ -27,17 +34,26 @@
   with_items:
     - /etc/prometheus
     - /var/lib/prometheus
+- name: creat alertmanager directory
+  file:
+    path: /etc/alertmanager
+    state: directory
+    owner: alertmanager
+    group: alertmanager
+    mode: "0755"
 - name: Create install directories
   file:
-    path: /usr/share/{{ item }}       
-    state: directory        
+    path: /usr/share/{{ item }}
+    state: directory
   with_items:
     - prometheus
-    - node_exporter   
+    - node_exporter
+    - alertmanager
 - name: Install Prometheus
   include: setup-prometheus.yml
 - name: Install Node Exporter
-  include: setup-node_exporter.yml  
+  include: setup-node_exporter.yml
 - name: Install Grafana
   include: setup-grafana.yml
-    
+- name: install alertmanager
+  include: setup-alertmanager.yml
