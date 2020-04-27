@@ -10,3 +10,11 @@ node_exp_version: 0.15.1
 node_exp_url: https://github.com/prometheus/node_exporter/releases/download/v{{ node_exp_version }}/node_exporter-{{ node_exp_version }}.linux-amd64.tar.gz
 node_exp_dest: /tmp/node_exporter-{{ node_exp_version }}.linux-amd64.tar.gz
 node_exp_install_dir: /usr/share/node_exporter
+
+# alertmanager variables
+alert_version: 0.17.0
+alert_url: https://github.com/prometheus/alertmanager/releases/download/v{{ alert_version }}/alertmanager-{{ alert_version }}.linux-amd64.tar.gz
+alert_dest: /tmp/alertmanager-{{ alert_version }}.linux-amd64.tar.gz
+alert_install_dir: /usr/share/alertmanager
+
+
