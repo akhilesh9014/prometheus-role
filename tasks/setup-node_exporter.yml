@@ -26,4 +26,9 @@
     state: started
     enabled: yes
   when: ansible_service_mgr == "systemd"
+- name: Check if alertmanager is accessible
+  uri:
+    url: http://13.127.109.203:9100
+    method: GET
+    status_code: 200    
 
