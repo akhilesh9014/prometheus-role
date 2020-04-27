@@ -36,11 +36,14 @@
     - /var/lib/prometheus
 - name: creat alertmanager directory
   file:
-    path: /etc/alertmanager
+    path: "{{ item }}"
     state: directory
     owner: alertmanager
     group: alertmanager
     mode: "0755"
+  with_items:
+    - /etc//alertmanager
+    - /var/lib/alertmanager
 - name: Create install directories
   file:
     path: /usr/share/{{ item }}
