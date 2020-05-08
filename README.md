@@ -12,12 +12,18 @@ Example Playbook
 
 Default ports:
 --------------
-Prometheus: 9090
-grafana: 3000
-node_exporter: 9100
+*Prometheus: 9090
+*grafana: 3000
+*node_exporter: 9100
+
+### service prometheus start
+###  service grafana-server start
+### service node_exporter start
+
+the above commands are starting the all services 
 
 
 Author Information
 ------------------
 
-Ravikiran Rapelli
+Akhilesh kolipaka
