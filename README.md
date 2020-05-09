@@ -20,7 +20,7 @@ Default ports:
 ###  service grafana-server start
 ### service node_exporter start
 
-the above commands are starting the all services 
+the above commands are start the all services 
 
 
 Author Information
